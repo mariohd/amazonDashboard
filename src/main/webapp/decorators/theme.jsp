@@ -41,8 +41,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">AWS Dashboard</a>
+                <a class="navbar-brand" href="<c:url value="/" />">AWS Dashboard</a>
             </div>
+            <ul class="pull-right" style="margin-top: 14px; margin-right: 14px">
+            	<p>
+                   <i class="fa fa-map-marker fa-fw"></i>
+                   Region: <a href="<c:url value="/regions/" />"><c:out value="${session.selectedRegion().getRegionName()}"/></a>
+                </p>
+            </ul>
             
             <!-- /.navbar-top-links -->
 
@@ -55,6 +61,9 @@
                         </li>
                         <li>
                             <a href="<c:url value="/instances/list" />"><i class="fa fa-desktop fa-fw"></i> Instances</a>
+                    	</li>
+                    	<li>
+                            <a href="<c:url value="/regions/" />"><i class="fa fa-map-marker fa-fw"></i> Regions</a>
                     	</li>
                     </ul>
                 </div>
