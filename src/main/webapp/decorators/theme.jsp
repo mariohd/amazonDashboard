@@ -1,6 +1,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/decorators/jstl.jsp"%>
 
 <!DOCTYPE html>
@@ -14,28 +15,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Amazon Dashboard</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/amazonDashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="/amazonDashboard/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/amazonDashboard/css/template/sb-admin-2.min.css" rel="stylesheet">
-    <link href="/amazonDashboard/css/template/amazonDashboard.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="/amazonDashboard/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <title>AWS Dashboard</title>
+    
+    <link href="<c:url value="/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/vendor/metisMenu/metisMenu.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/css/template/sb-admin-2.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/css/template/amazonDashboard.css"/>" rel="stylesheet">
+    <link href="<c:url value="/vendor/font-awesome/css/font-awesome.min.css" />" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -51,8 +41,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Amazon Dashboard</a>
+                <a class="navbar-brand" href="<c:url value="/" />">AWS Dashboard</a>
             </div>
+            <ul class="pull-right" style="margin-top: 14px; margin-right: 14px">
+            	<p>
+                   <i class="fa fa-map-marker fa-fw"></i>
+                   Region: <a href="<c:url value="/regions/" />"><c:out value="${session.selectedRegion().getRegionName()}"/></a>
+                </p>
+            </ul>
             
             <!-- /.navbar-top-links -->
 
@@ -60,10 +56,14 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/amazonDashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="<c:url value="/"/>">
+                            <em class="fa fa-dashboard fa-fw"></em> Dashboard</a>
                         </li>
                         <li>
                             <a href="<c:url value="/instances/list" />"><i class="fa fa-desktop fa-fw"></i> Instances</a>
+                    	</li>
+                    	<li>
+                            <a href="<c:url value="/regions/" />"><i class="fa fa-map-marker fa-fw"></i> Regions</a>
                     	</li>
                     </ul>
                 </div>
@@ -81,18 +81,9 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="/amazonDashboard/vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/amazonDashboard/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/amazonDashboard/vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/amazonDashboard/js/template/sb-admin-2.min.js"></script>
-
+    <script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
+    <script src="<c:url value="/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value="/vendor/metisMenu/metisMenu.min.js"/>"></script>
+    <script src="<c:url value="/js/template/sb-admin-2.min.js"/>"></script>
 </body>
-
 </html>

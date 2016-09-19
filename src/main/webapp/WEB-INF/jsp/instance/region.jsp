@@ -14,6 +14,6 @@
 				</c:forEach>
 			</select>
        </div>
-		<button type="submit" class="btn btn-success pull-right">Next</button>
+		<button type="submit" class="btn btn-success pull-right">Select</button>
     </fieldset>
 </form>
