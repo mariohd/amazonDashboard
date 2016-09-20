@@ -1,0 +1,6 @@
+{
+  "name": "awsda",
+  "description": "This is a small application to manage ec2 instances on amazon dashboard",
+  "repository": "https://github.com/cmendesce/amazonDashboard",
+  "image": "heroku/java"
+}
