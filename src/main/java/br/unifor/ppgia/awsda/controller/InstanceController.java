@@ -58,20 +58,23 @@ public class InstanceController {
 	}
 
 	@Path("create")
-	public void create(CreateInstanceModel model) {
-		RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
-
-		runInstancesRequest.withImageId(model.getAmiId()).withMinCount(1).withMaxCount(model.getMaxInstances())
-				.withInstanceType(model.getInstanceType()).withKeyName("homework-cloud")
-				.withSecurityGroups(new ArrayList<String>());
-
-		RunInstancesResult runInstances = ec2.runInstances(runInstancesRequest);
-		List<Instance> instances = runInstances.getReservation().getInstances();
-		for (Instance instance : instances) {
-			CreateTagsRequest createTagsRequest = new CreateTagsRequest();
-			createTagsRequest.withResources(instance.getInstanceId()).withTags(new Tag("Name", model.getInstanceName()),
-					new Tag("Description", model.getInstanceDescription()));
-			ec2.createTags(createTagsRequest);
+	public void create(List<CreateInstanceModel> models) {
+		for (CreateInstanceModel model : models) {
+			RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
+	
+			runInstancesRequest.withImageId(model.getAmiId()).withMinCount(1).withMaxCount(model.getMaxInstances())
+					.withInstanceType(model.getInstanceType()).withKeyName("homework-cloud")
+					.withSecurityGroups(new ArrayList<String>());
+	
+			RunInstancesResult runInstances = ec2.runInstances(runInstancesRequest);
+			List<Instance> instances = runInstances.getReservation().getInstances();
+			for (Instance instance : instances) {
+				CreateTagsRequest createTagsRequest = new CreateTagsRequest();
+				createTagsRequest.withResources(instance.getInstanceId()).withTags(
+						new Tag("Name", model.getInstanceName()),
+						new Tag("Description", model.getInstanceDescription()));
+				ec2.createTags(createTagsRequest);
+			}
 		}
 
 		result.redirectTo(this).list();
@@ -121,6 +124,13 @@ public class InstanceController {
 				}
 			});
 		}
+		
+		ins.sort(new Comparator<Instance>() {
+			@Override
+			public int compare(Instance o1, Instance o2) {
+				return o2.getLaunchTime().compareTo(o1.getLaunchTime());
+			}
+		});
 
 		result.include("instances", ins);
 	}

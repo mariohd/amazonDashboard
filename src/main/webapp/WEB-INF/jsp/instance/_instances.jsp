@@ -7,6 +7,12 @@
 		<td><c:out value="${instance.tags[1].value}"/></td>
 		<td><c:out value="${instance.instanceId}"/></td>
 		<td><c:out value="${instance.imageId}"/></td>
+		<td><c:out value="${instance.instanceType}"/></td>
+		<td>
+			<fmt:formatDate type="both" 
+            	dateStyle="short" timeStyle="medium" 
+            	value="${instance.launchTime}" />
+		</td>
 		<td style="text-transform: capitalize"><c:out value="${instance.state.name}"/></td>
 		<td>
 			

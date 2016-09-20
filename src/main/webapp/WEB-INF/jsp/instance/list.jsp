@@ -21,6 +21,8 @@
 						<th>Description</th>
 						<th>Instance ID</th>
 						<th>Image ID</th>
+						<th>Type</th>
+						<th>Started At</th>
 						<th>Status</th>
 						<th></th>
                       </tr>
