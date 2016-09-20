@@ -8,7 +8,7 @@
 <form role="form" method="post" action="<c:url value="/instances/create" />">
     <fieldset >
     	<div class="panel panel-default">
-    		<div class="panel-heading">Instance #1</div>
+    		<div class="panel-heading">Create an Instance</div>
     		<div class="panel-body">
     			<div class="form-group">
 					<label>Region</label>
@@ -17,6 +17,10 @@
 	    		<div class="form-group">
 					<label>Name</label>
 					<input class="form-control" name="model.instanceName" placeholder="Name">
+				</div>
+				<div class="form-group">
+					<label># Instances</label>
+					<input class="form-control" value="1" name="model.maxInstances" placeholder="1" type="number">
 				</div>
 				<div class="form-group">
 					<label>Description</label>

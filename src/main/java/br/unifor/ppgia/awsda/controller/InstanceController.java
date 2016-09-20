@@ -60,7 +60,7 @@ public class InstanceController {
 	public void create(CreateInstanceModel model) {
 		RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
 
-		runInstancesRequest.withImageId(model.getAmiId()).withMinCount(1).withMaxCount(1)
+		runInstancesRequest.withImageId(model.getAmiId()).withMinCount(1).withMaxCount(model.getMaxInstances())
 				.withInstanceType(model.getInstanceType()).withKeyName("homework-cloud")
 				.withSecurityGroups(new ArrayList<String>());
 
@@ -112,7 +112,6 @@ public class InstanceController {
 
 	@Get("/terminate/{id}")
 	public void terminate(String id) {
-		ec2.setEndpoint("ec2.us-west-2.amazonaws.com");
 		TerminateInstancesRequest request = new TerminateInstancesRequest(asList(id));
 		ec2.terminateInstances(request);
 
@@ -121,7 +120,6 @@ public class InstanceController {
 
 	@Get("/stop/{id}")
 	public void stop(String id) {
-		ec2.setEndpoint("ec2.us-west-2.amazonaws.com");
 		StopInstancesRequest request = new StopInstancesRequest(asList(id));
 		ec2.stopInstances(request);
 
@@ -130,7 +128,6 @@ public class InstanceController {
 
 	@Get("/start/{id}")
 	public void start(String id) {
-		ec2.setEndpoint("ec2.us-west-2.amazonaws.com");
 		StartInstancesRequest request = new StartInstancesRequest(asList(id));
 		ec2.startInstances(request);
 
