@@ -3,6 +3,7 @@ package br.unifor.ppgia.awsda.controller;
 import static java.util.Arrays.asList;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -98,6 +99,12 @@ public class InstanceController {
 
 	@Path("/list")
 	public void list() {
+		_instances();
+		result.include("regionEndpoint", session.selectedRegion().getEndpoint());
+	}
+	
+	@Path("/json/list")
+	public void _instances() {
 		DescribeInstancesResult results = ec2.describeInstances();
 		List<Reservation> reservations = results.getReservations();
 		List<Instance> ins = new ArrayList<Instance>();
@@ -105,9 +112,17 @@ public class InstanceController {
 		for (Reservation reservation : reservations) {
 			ins.addAll(reservation.getInstances());
 		}
+		
+		for (Instance i : ins) {
+			i.getTags().sort(new Comparator<Tag>() {
+				@Override
+				public int compare(Tag o1, Tag o2) {
+					return o2.getKey().compareTo(o1.getKey());
+				}
+			});
+		}
 
 		result.include("instances", ins);
-		result.include("regionEndpoint", session.selectedRegion().getEndpoint());
 	}
 
 	@Get("/terminate/{id}")

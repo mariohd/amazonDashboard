@@ -3,4 +3,8 @@
     <decorator name="basic-theme" page="theme.jsp">
         <pattern>/*</pattern>
     </decorator>
+    
+    <excludes>
+    	<pattern>*/json/*</pattern>
+    </excludes>
 </decorators>

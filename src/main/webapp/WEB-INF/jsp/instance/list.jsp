@@ -8,7 +8,8 @@
 <div class="col-lg-12">
   <div class="panel panel-default">
   		<div class="panel-heading">
-  			Instances of ${regionEndpoint}
+ 			Instances of ${regionEndpoint}
+ 			<span id="updateTableInstances" class="pull-right fa fa-refresh fa-fw link"></span>
   		</div>
       <div class="panel-body">
           <div class="table-responsive">
@@ -24,38 +25,8 @@
 						<th></th>
                       </tr>
                   </thead>
-                  <tbody>
-					<c:forEach var="instance" items="${instances }" varStatus="loop">
-						<tr class="${ instance.state.name eq 'running'? 'success' : (instance.state.name eq 'pending'? 'warning' : 'danger') }">
-							<td>${loop.index + 1 }</td>
-							<td><c:out value="${instance.tags[0].value}"/></td>
-							<td><c:out value="${instance.tags[1].value}"/></td>
-							<td><c:out value="${instance.instanceId}"/></td>
-							<td><c:out value="${instance.imageId}"/></td>
-							<td style="text-transform: capitalize"><c:out value="${instance.state.name}"/></td>
-							<td>
-								
-								<c:if test="${'running' eq instance.state.name}">
-									<a title="Stop" alt="Stop" href="<c:url value="/instances/stop"/>/${instance.instanceId}">
-										<i class="fa fa-power-off fa-fw link">
-										</i>
-									</a>
-								</c:if>
-								<c:if test="${'stopped' eq instance.state.name}">
-									<a title="Start" alt="Start" href="<c:url value="/instances/start"/>/${instance.instanceId}">
-										<i class="fa fa-power-off fa-fw link">
-										</i>
-									</a>
-								</c:if>
-								<c:if test="${'terminated' != instance.state.name}">
-									<a title="Terminate" alt="Terminate" href="<c:url value="/instances/terminate"/>/${instance.instanceId}">
-										<i class="fa fa-times fa-fw link">
-										</i>
-									</a>
-								</c:if>
-							</td>
-						</tr>
-					</c:forEach>
+                  <tbody id="currentInstances">
+					<%@ include file="_instances.jsp" %>
                   </tbody>
               </table>
               <a href="<c:url value="/instances/add" />">
@@ -67,3 +38,5 @@
       </div>
   </div>
 </div>
+
+<script src="<c:url value="/js/updateList.js" />"></script>

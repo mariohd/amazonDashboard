@@ -26,6 +26,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
 </head>
 
 <body>
@@ -81,7 +83,6 @@
     </div>
     <!-- /#wrapper -->
 
-    <script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
     <script src="<c:url value="/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/vendor/metisMenu/metisMenu.min.js"/>"></script>
     <script src="<c:url value="/js/template/sb-admin-2.min.js"/>"></script>
