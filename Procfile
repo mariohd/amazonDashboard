@@ -1,1 +1,1 @@
-web java -Dserver.port=$PORT $JAVA_OPTS -jar target/awsda.jar
+web java -Dserver.port=$PORT $JAVA_OPTS -jar target/awsda.war
