@@ -15,6 +15,7 @@ public class CreateInstanceModel implements Serializable {
 	private String instanceDescription;
 	private String amiId;
 	private InstanceType instanceType;
+	private int maxInstances;
 
 	public String getRegionEndpoint() {
 		return regionEndpoint;
@@ -58,5 +59,13 @@ public class CreateInstanceModel implements Serializable {
 
 	public static Iterator<String> instanceTypes() {
 		return Arrays.asList(InstanceType.values()).stream().map(i -> i.toString()).iterator();
+	}
+
+	public int getMaxInstances() {
+		return maxInstances;
+	}
+
+	public void setMaxInstances(int maxInstances) {
+		this.maxInstances = maxInstances;
 	}
 }
