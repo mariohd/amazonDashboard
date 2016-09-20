@@ -39,4 +39,11 @@
   </div>
 </div>
 
+
+<div id="loadingBar" class="sk-folding-cube" style="display: none;">
+  <div class="sk-cube1 sk-cube"></div>
+  <div class="sk-cube2 sk-cube"></div>
+  <div class="sk-cube4 sk-cube"></div>
+  <div class="sk-cube3 sk-cube"></div>
+</div>
 <script src="<c:url value="/js/updateList.js" />"></script>

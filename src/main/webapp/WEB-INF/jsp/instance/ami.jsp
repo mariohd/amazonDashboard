@@ -19,12 +19,12 @@
 					<input class="form-control" name="model.instanceName" placeholder="Name">
 				</div>
 				<div class="form-group">
-					<label># Instances</label>
-					<input class="form-control" value="1" name="model.maxInstances" placeholder="1" type="number">
-				</div>
-				<div class="form-group">
 					<label>Description</label>
 					<input class="form-control" name="model.instanceDescription" placeholder="Description">
+				</div>
+				<div class="form-group">
+					<label># Instances</label>
+					<input class="form-control" value="1" name="model.maxInstances" placeholder="1" type="number">
 				</div>
 				<div class="form-group">
 					<label>Instance type</label>
